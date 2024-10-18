@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>建议表单</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .form-group button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .form-group button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>留下您的建议</h2>
+    <form id="suggestionForm">
+        <div class="form-group">
+            <label for="name">姓名:</label>
+            <input type="text" id="name" name="name" placeholder="请输入您的姓名">
+        </div>
+        <div class="form-group">
+            <label for="email">邮箱:</label>
+            <input type="email" id="email" name="email" placeholder="请输入您的邮箱">
+        </div>
+        <div class="form-group">
+            <label for="suggestion">建议:</label>
+            <textarea id="suggestion" name="suggestion" rows="5" placeholder="请输入您的建议"></textarea>
+        </div>
+        <div class="form-group">
+            <button type="submit">提交</button>
+        </div>
+    </form>
+</div>
+
+<script>
+    document.getElementById('suggestionForm').addEventListener('submit', function(e) {
+        e.preventDefault(); // 阻止表单默认提交行为
+
+        // 获取表单数据
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const suggestion = document.getElementById('suggestion').value;
+
+        // 简单验证
+        if(name === "" || email === "" || suggestion === "") {
+            alert("所有字段都是必填的！");
+            return;
+        }
+
+        // 这里可以将表单数据发送到服务器进行处理，例如通过Ajax提交
+        console.log("提交成功:", { name, email, suggestion });
+        alert("谢谢您的建议！");
+        
+        // 清空表单
+        document.getElementById('suggestionForm').reset();
+    });
+</script>
+
+</body>
+</html>
